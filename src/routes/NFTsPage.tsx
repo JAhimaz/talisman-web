@@ -1,10 +1,11 @@
 import { ExtensionStatusGate, PanelSection } from '@components'
 import NFTsByAddress from '@components/NFTsByAddress'
+import NFTsFavouritesByAddress from '@components/NFTsFavouritesByAddress'
 import { NoNFTsPlaceholder } from '@libs/nft/NoNFTsPlaceholder'
 import { useHasNFTs } from '@libs/nft/useHasNFTs'
 import { Account as IAccount, useExtensionAutoConnect } from '@libs/talisman'
 import Identicon from '@polkadot/react-identicon'
-import { useNftsByAddress } from '@talisman-components/nft'
+import { useNfts, useNftsByAddress } from '@talisman-components/nft'
 import { device } from '@util/breakpoints'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
@@ -41,6 +42,48 @@ const ExtensionUnavailable = styled(props => {
     color: #999;
     font-size: 1.6rem;
   }
+`
+
+const NFTFavouritesGrid = styled(({ className = '', accounts}: AccountProps) => {
+  const addresses = getAllAddresses()
+
+  function getAllAddresses() {
+    let tempArr = [];
+
+    accounts.forEach(account => {
+      tempArr.push(account.address)
+    });
+
+    return accounts;
+  }
+
+  return (
+    
+    <div className={className}>
+      <h2>Favourites</h2>
+      <div className="nft-grid">
+        <NFTsFavouritesByAddress addresses={addresses} />
+      </div>
+    </div>
+  )
+})`
+.nft-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+
+  @media ${device.md} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media ${device.lg} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media ${device.xl} {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 `
 
 const NFTGrid = styled(({ className = '', account }: AccountProps) => {
@@ -114,6 +157,10 @@ const NFTsPage = styled(({ className }) => {
         <div className="all-nft-grids">
           {isLoading && <>Loading...</>}
           {!hasNfts && !isLoading && <NoNFTsPlaceholder />}
+          {hasNfts &&
+            !isLoading &&
+            <NFTFavouritesGrid accounts={accounts} />
+            }
           {hasNfts &&
             !isLoading &&
             accounts?.map(account => {

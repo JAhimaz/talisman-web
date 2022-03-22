@@ -1,6 +1,9 @@
 import { NftCard, useNftsByAddress } from '@talisman-components/nft'
 import { device } from '@util/breakpoints'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import FavouriteNFT from './FavouriteNFT'
+
 
 import MaterialLoader from './MaterialLoader'
 
@@ -19,6 +22,9 @@ interface NFTsByAddressProps {
 
 const NFTsByAddress = styled(({ className = '', address, limit }: NFTsByAddressProps) => {
   const { nfts, isLoading } = useNftsByAddress(address as string)
+
+
+
   if (isLoading) {
     return <Loading />
   }
@@ -29,6 +35,7 @@ const NFTsByAddress = styled(({ className = '', address, limit }: NFTsByAddressP
   return pickedNfts?.map((nft: any) => {
     return (
       <div key={nft.id} className={className}>
+        <FavouriteNFT id={nft.id}/>
         <NftCard nft={nft} />
       </div>
     )
