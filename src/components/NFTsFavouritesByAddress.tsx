@@ -20,8 +20,12 @@ interface NFTsFavouritesByAddressProps {
 }
 
 const NFTsFavouritesByAddress = styled(({ className = '', addresses, limit }: NFTsFavouritesByAddressProps) => {
-  const nfts = getAllNFTs()
   
+  const nfts = getAllNFTs()
+  const [favourites, setFavourites] = useState(
+    JSON.parse(localStorage.getItem("favourites")) || []
+  );
+
   function getAllNFTs(){
     let tempArray = []
     addresses.forEach(address => {
@@ -30,18 +34,12 @@ const NFTsFavouritesByAddress = styled(({ className = '', addresses, limit }: NF
         tempArray.push(item)
       })
     });
-
     return tempArray;
   }
-  
-  const [favourites, setFavourites] = useState(
-    JSON.parse(localStorage.getItem("favourites")) || []
-  );
 
   window.addEventListener('favourites', () => {
     setFavourites(JSON.parse(localStorage.getItem("favourites")))
     console.log("NFT Favourites Called")
-    // setFavourites(JSON.parse(localStorage.getItem("favourites")))
   }, { once: true })
 
 

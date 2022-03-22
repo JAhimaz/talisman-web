@@ -41,17 +41,12 @@ const FavouriteNFT = styled(({ className = '', id }: FavouriteNFTProps) => {
         }
 
         window.dispatchEvent(new Event('favourites'))
-        // setFavourited(checkNFTFavourited())
     }
 
     return (
         <div className={className}>
             <a className="favourite-btn" onClick={handleFavouriteLogic}>
-                {favourited ? ( 
-                    "❤️"
-                ) : (
-                    "🖤"
-                )}
+                {favourited ? ( "❤️" ) : ( "🖤" )}
             </a>
         </div>
     )
