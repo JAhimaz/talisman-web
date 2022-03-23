@@ -7,7 +7,7 @@ Features:
 1. Favourite NFTs will appear on a new section at the very top
 2. Allows access of NFTs from multiple accounts
 
-![Final](https://i.gyazo.com/680884187902a8d74eb2389f083c172e.mp4)
+https://gyazo.com/680884187902a8d74eb2389f083c172e
 
 Limitations/Errors:
 
