@@ -7,7 +7,7 @@ Features:
 1. Favourite NFTs will appear on a new section at the very top
 2. Allows access of NFTs from multiple accounts
 
-![Final](https://gyazo.com/680884187902a8d74eb2389f083c172e)
+![Final](https://i.gyazo.com/680884187902a8d74eb2389f083c172e.mp4)
 
 Limitations/Errors:
 
@@ -15,7 +15,7 @@ Limitations/Errors:
 2. Too many even listener calls (Due to each NFTFavourite.tsx having a listener)
    - Possible workaround? Listens only for that specific NFTid?
 
-![Too Many Listeners](https://gyazo.com/974795203b5cd9189e85759960dab46c)
+![Too Many Listeners](https://i.gyazo.com/974795203b5cd9189e85759960dab46c.png)
 
 3. On connection of a new account, should possibly look into reloading the nftlist. (Could help resolve issue number 1)
 
@@ -26,7 +26,7 @@ Limitations/Errors:
 3. Quick reading on localstorage
 4. Planned on paper, the outline of what the components to be built (Props, functions, logic)  
 
-![Paper Planning](https://gyazo.com/cda8be13cc9f415f3b7971377c9fb90c)  
+![Paper Planning](https://i.gyazo.com/cda8be13cc9f415f3b7971377c9fb90c.jpg)  
 
 5. Implemented the proposed components.  
 6. Realised that this was only compatible per account. Adding 2 accounts would create 2 favourite lists. Checked back at the code to redo.
